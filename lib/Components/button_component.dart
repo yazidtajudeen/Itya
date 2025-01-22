@@ -49,7 +49,7 @@ class CustomButton extends StatelessWidget {
             if (icon != null)
               Positioned(
                 right: 20,
-                top: 25,
+                top: 24,
                 child: Icon(
                   icon,
                   color: textColor,

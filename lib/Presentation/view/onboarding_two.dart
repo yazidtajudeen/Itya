@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
-import 'package:yaz/Presentation/view/select_location.dart';
+import 'package:yaz/Presentation/get_started.dart';
 import 'package:yaz/themes/colors.dart';
 import 'package:yaz/Components/button_component.dart';
 
@@ -50,7 +50,7 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
       );
 
       _showSnackbar('Location: ${position.latitude}, ${position.longitude}');
-      _navigateToSelectLocation();
+      _navigateToGetStarted();
     } catch (e) {
       _showSnackbar('Error fetching location: $e');
     }
@@ -64,12 +64,12 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
     }
   }
 
-  void _navigateToSelectLocation() {
+  void _navigateToGetStarted() {
     if (mounted) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const SelectLocation(),
+          builder: (context) => const GetStarted(),
         ),
       );
     }
@@ -88,7 +88,7 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
           Padding(
             padding: EdgeInsets.fromLTRB(width * 0.8, height * 0.05, 0, 0),
             child: TextButton(
-              onPressed: _navigateToSelectLocation,
+              onPressed: _navigateToGetStarted,
               child: const Text(
                 "Skip",
                 style: TextStyle(
@@ -178,20 +178,6 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
             borderRadius: 18,
             width: width * 0.85,
             height: height * 0.08,
-          ),
-          SizedBox(height: height * 0.03),
-          GestureDetector(
-            onTap: _navigateToSelectLocation,
-            child: RichText(
-              text: TextSpan(
-                text: 'Enter Location Manually',
-                style: TextStyle(
-                  color: AppColors.brightBlue,
-                  fontSize: width * 0.04,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
           ),
         ],
       ),
