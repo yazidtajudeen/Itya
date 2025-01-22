@@ -81,7 +81,7 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(314, 35, 0, 0),
+            padding: const EdgeInsets.fromLTRB(320, 35, 0, 0),
             child: TextButton(
               onPressed: _navigateToSelectLocation,
               child: const Text(
@@ -89,7 +89,7 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
                 style: TextStyle(
                   color: AppColors.brightBlue,
                   fontWeight: FontWeight.w500,
-                  fontSize: 12,
+                  fontSize: 16,
                 ),
               ),
             ),

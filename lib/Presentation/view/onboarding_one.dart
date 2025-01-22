@@ -58,7 +58,7 @@ class _OnboardingOneState extends State<OnboardingOne>
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(314, 35, 0, 0),
+              padding: const EdgeInsets.fromLTRB(320, 35, 0, 0),
               child: TextButton(
                 onPressed: _navigateToNextPage,
                 child: const Text(
@@ -66,7 +66,7 @@ class _OnboardingOneState extends State<OnboardingOne>
                   style: TextStyle(
                     color: AppColors.brightBlue,
                     fontWeight: FontWeight.w500,
-                    fontSize: 12,
+                    fontSize: 16,
                   ),
                 ),
               ),

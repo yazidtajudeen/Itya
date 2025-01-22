@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yaz/Presentation/get_started.dart';
 import 'package:yaz/Presentation/view/Splash.dart';
 import 'package:yaz/Presentation/view/onboarding_one.dart';
 import 'package:yaz/Presentation/view/onboarding_two.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           "/onboarding_one": (context) => const OnboardingOne(),
           "/onboarding_two": (context) => const OnboardingTwo(),
           "/select_location": (context) => const SelectLocation(),
+          "/get_started": (context) => const GetStarted(),
         });
   }
 }

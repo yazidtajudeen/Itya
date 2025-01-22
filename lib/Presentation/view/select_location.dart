@@ -13,7 +13,10 @@ class _SelectLocationState extends State<SelectLocation> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [],
+        ),
       ),
     );
   }
