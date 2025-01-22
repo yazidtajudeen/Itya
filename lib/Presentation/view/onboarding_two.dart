@@ -81,7 +81,7 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(320, 35, 0, 0),
+            padding: const EdgeInsets.fromLTRB(370, 45, 0, 0),
             child: TextButton(
               onPressed: _navigateToSelectLocation,
               child: const Text(

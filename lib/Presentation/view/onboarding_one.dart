@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yaz/Presentation/view/onboarding_two.dart';
 import 'package:yaz/themes/colors.dart';
+import 'package:yaz/Components/button_component.dart'; // Import your CustomButton component
 
 class OnboardingOne extends StatefulWidget {
   const OnboardingOne({super.key});
@@ -51,6 +52,10 @@ class _OnboardingOneState extends State<OnboardingOne>
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -58,7 +63,7 @@ class _OnboardingOneState extends State<OnboardingOne>
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(320, 35, 0, 0),
+              padding: EdgeInsets.fromLTRB(width * 0.8, height * 0.05, 0, 0),
               child: TextButton(
                 onPressed: _navigateToNextPage,
                 child: const Text(
@@ -71,16 +76,16 @@ class _OnboardingOneState extends State<OnboardingOne>
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            const SizedBox(
-              width: 300,
-              height: 315,
-              child: Image(
+            SizedBox(height: height * 0.02),
+            SizedBox(
+              width: width * 0.8,
+              height: height * 0.35,
+              child: const Image(
                 image: AssetImage('images/onboarding.png'),
                 fit: BoxFit.contain,
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: height * 0.03),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -97,7 +102,7 @@ class _OnboardingOneState extends State<OnboardingOne>
                     );
                   },
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: width * 0.02),
                 AnimatedBuilder(
                   animation: _indicatorAnimation,
                   builder: (context, child) {
@@ -115,16 +120,16 @@ class _OnboardingOneState extends State<OnboardingOne>
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: height * 0.03),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: width * 0.08),
               child: Column(
                 children: [
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      style: const TextStyle(
-                        fontSize: 24,
+                      style: TextStyle(
+                        fontSize: width * 0.06,
                         fontWeight: FontWeight.w600,
                         height: 1.5,
                         color: Colors.black,
@@ -139,12 +144,12 @@ class _OnboardingOneState extends State<OnboardingOne>
                       ],
                     ),
                   ),
-                  const SizedBox(height: 15),
-                  const Text(
+                  SizedBox(height: height * 0.02),
+                  Text(
                     "We'll find easy ideas for meals that taste amazing,\nget ready to discover delicious\nthings that you and everyone will love!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: width * 0.03,
                       fontWeight: FontWeight.w400,
                       height: 1.5,
                     ),
@@ -152,40 +157,16 @@ class _OnboardingOneState extends State<OnboardingOne>
                 ],
               ),
             ),
-            const SizedBox(height: 60),
-            GestureDetector(
-              onTap: _navigateToNextPage,
-              child: Container(
-                width: 325,
-                height: 57,
-                decoration: BoxDecoration(
-                  color: AppColors.navyBlue,
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Stack(
-                  children: [
-                    const Center(
-                      child: Text(
-                        'Next',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      right: 20,
-                      top: 16,
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 24,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            SizedBox(height: height * 0.07),
+            CustomButton(
+              text: 'Next',
+              onPressed: _navigateToNextPage,
+              color: AppColors.navyBlue,
+              textColor: Colors.white,
+              borderRadius: 18,
+              width: width * 0.85,
+              height: height * 0.08,
+              icon: Icons.arrow_forward,
             ),
           ],
         ),
