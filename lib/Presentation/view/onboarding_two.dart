@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:yaz/Presentation/view/select_location.dart';
 import 'package:yaz/themes/colors.dart';
+import 'package:yaz/Components/button_component.dart';
 
 class OnboardingTwo extends StatefulWidget {
   const OnboardingTwo({super.key});
@@ -76,12 +77,16 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(370, 45, 0, 0),
+            padding: EdgeInsets.fromLTRB(width * 0.8, height * 0.05, 0, 0),
             child: TextButton(
               onPressed: _navigateToSelectLocation,
               child: const Text(
@@ -94,25 +99,25 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
               ),
             ),
           ),
-          const SizedBox(height: 55),
-          const SizedBox(
-            width: 300,
-            height: 315,
-            child: Image(
+          SizedBox(height: height * 0.07),
+          SizedBox(
+            width: width * 0.8,
+            height: height * 0.35,
+            child: const Image(
               image: AssetImage('images/locator.png'),
               fit: BoxFit.contain,
             ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: height * 0.03),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.symmetric(horizontal: width * 0.08),
             child: Column(
               children: [
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                    style: const TextStyle(
-                      fontSize: 24,
+                    style: TextStyle(
+                      fontSize: width * 0.06,
                       fontWeight: FontWeight.w600,
                       height: 1.5,
                       color: Colors.black,
@@ -128,12 +133,12 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 15),
-                const Text(
+                SizedBox(height: height * 0.02),
+                Text(
                   "We'll find easy ideas for meals that taste amazing,\nget ready to discover delicious\nthings that you and everyone will love!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: width * 0.03,
                     fontWeight: FontWeight.w400,
                     height: 1.5,
                   ),
@@ -141,22 +146,22 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
               ],
             ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: height * 0.03),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 8,
-                height: 8,
+                width: width * 0.02,
+                height: width * 0.02,
                 decoration: BoxDecoration(
                   color: Colors.grey[300],
                   shape: BoxShape.circle,
                 ),
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: width * 0.02),
               Container(
-                width: 24,
-                height: 8,
+                width: width * 0.06,
+                height: width * 0.02,
                 decoration: BoxDecoration(
                   color: AppColors.brightBlue,
                   borderRadius: BorderRadius.circular(4),
@@ -164,41 +169,30 @@ class _OnboardingTwoState extends State<OnboardingTwo> {
               ),
             ],
           ),
-          const SizedBox(height: 30),
-          GestureDetector(
-            onTap: _getCurrentLocation,
-            child: Container(
-              width: 325,
-              height: 57,
-              decoration: BoxDecoration(
-                color: AppColors.navyBlue,
-                borderRadius: BorderRadius.circular(18),
-              ),
-              child: const Center(
-                child: Text(
-                  'Allow Location Access',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
+          SizedBox(height: height * 0.05),
+          CustomButton(
+            text: 'Allow Location Access',
+            onPressed: _getCurrentLocation,
+            color: AppColors.navyBlue,
+            textColor: Colors.white,
+            borderRadius: 18,
+            width: width * 0.85,
+            height: height * 0.08,
           ),
-          const SizedBox(height: 27),
+          SizedBox(height: height * 0.03),
           GestureDetector(
             onTap: _navigateToSelectLocation,
             child: RichText(
               text: TextSpan(
                 text: 'Enter Location Manually',
                 style: TextStyle(
-                    color: AppColors.brightBlue,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
+                  color: AppColors.brightBlue,
+                  fontSize: width * 0.04,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
