@@ -5,6 +5,7 @@ import 'package:yaz/Presentation/get_started.dart';
 import 'package:yaz/Presentation/view/Splash.dart';
 import 'package:yaz/Presentation/view/onboarding_one.dart';
 import 'package:yaz/Presentation/view/onboarding_two.dart';
+import 'package:yaz/Presentation/view/select_auth.dart';
 import 'package:yaz/Presentation/view/select_location.dart';
 
 void main() async {
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           "/onboarding_two": (context) => const OnboardingTwo(),
           "/select_location": (context) => const SelectLocation(),
           "/get_started": (context) => const GetStarted(),
+          "/select_auth": (context) => const SelectAuth(),
         });
   }
 }

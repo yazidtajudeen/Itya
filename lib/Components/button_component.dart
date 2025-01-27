@@ -10,7 +10,7 @@ class CustomButton extends StatelessWidget {
   final double width;
   final double height;
   final IconData? icon;
-
+  final TextStyle? textstyle;
   const CustomButton({
     super.key,
     required this.text,
@@ -21,6 +21,7 @@ class CustomButton extends StatelessWidget {
     this.width = 325,
     this.height = 57,
     this.icon,
+    this.textstyle,
   });
 
   @override
@@ -39,11 +40,12 @@ class CustomButton extends StatelessWidget {
             Center(
               child: Text(
                 text,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: textstyle ??
+                    TextStyle(
+                      color: textColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
               ),
             ),
             if (icon != null)

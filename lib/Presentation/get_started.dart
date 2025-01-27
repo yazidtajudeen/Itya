@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yaz/Presentation/view/select_auth.dart';
 import 'package:yaz/themes/colors.dart';
 import 'package:yaz/Components/button_component.dart';
 
@@ -70,13 +71,18 @@ class _GetStartedState extends State<GetStarted> {
             SizedBox(height: height * 0.07),
             CustomButton(
               text: 'Get Started',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SelectAuth()));
+              },
               color: AppColors.navyBlue,
-              textColor: Colors.white,
               borderRadius: 20,
               width: width * 0.8,
               height: height * 0.07,
               icon: Icons.arrow_forward,
+              textstyle: TextStyle(color: Colors.white, fontSize: width * 0.04),
             ),
           ],
         ),
