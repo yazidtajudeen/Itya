@@ -11,9 +11,9 @@ import 'package:yaz/Presentation/view/select_location.dart';
 void main() async {
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
-  const String supabaseUrl = 'https://bwnyosocxcecojsozqdg.supabase.co';
+  const String supabaseUrl = 'https://pptltztgxybtxqbyslpk.supabase.co';
   const String supabaseAnonKey =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3bnlvc29jeGNlY29qc296cWRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU4NjA2MDEsImV4cCI6MjA1MTQzNjYwMX0.cBg6bJfc3u8uNHrx5kzU6-fEKM08TpCKH_AfQTMPC1E';
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwdGx0enRneHlidHhxYnlzbHBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgyMzU4NjYsImV4cCI6MjA1MzgxMTg2Nn0.sGKrUNstyRxjBgxcckBvraAoJxI4ogNVmbjm8bg_Lrg';
   await Supabase.initialize(
     url: supabaseUrl,
     anonKey: supabaseAnonKey,
@@ -25,7 +25,6 @@ final supabase = Supabase.instance.client;
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

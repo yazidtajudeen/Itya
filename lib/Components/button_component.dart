@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
   final double height;
   final IconData? icon;
   final TextStyle? textstyle;
-  const CustomButton({
+  const CustomButton({  
     super.key,
     required this.text,
     required this.onPressed,
