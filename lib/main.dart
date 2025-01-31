@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yaz/Presentation/get_started.dart';
 import 'package:yaz/Presentation/view/Splash.dart';
@@ -9,8 +10,10 @@ import 'package:yaz/Presentation/view/select_auth.dart';
 import 'package:yaz/Presentation/view/select_location.dart';
 
 void main() async {
-  runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
   const String supabaseUrl = 'https://pptltztgxybtxqbyslpk.supabase.co';
   const String supabaseAnonKey =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwdGx0enRneHlidHhxYnlzbHBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgyMzU4NjYsImV4cCI6MjA1MzgxMTg2Nn0.sGKrUNstyRxjBgxcckBvraAoJxI4ogNVmbjm8bg_Lrg';
@@ -18,6 +21,9 @@ void main() async {
     url: supabaseUrl,
     anonKey: supabaseAnonKey,
   );
+
+  // Run the app after both Firebase and Supabase are initialized
+  runApp(const MyApp());
 }
 
 final supabase = Supabase.instance.client;

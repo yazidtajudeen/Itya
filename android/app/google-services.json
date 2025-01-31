@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "384053106480",
+    "project_id": "flutterauth-2cb3e",
+    "storage_bucket": "flutterauth-2cb3e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384053106480:android:6da436f9f571a4902fdaf5",
+        "android_client_info": {
+          "package_name": "com.example.yaz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384053106480-lf097jamn87i6rrhijj15n78gs1oc6bi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBckYwkje97oDk4p0ZTNK6w1gSOcOiPN7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384053106480-lf097jamn87i6rrhijj15n78gs1oc6bi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "384053106480-koe7d5g566goik1utmnliubun92h2jq8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yaz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

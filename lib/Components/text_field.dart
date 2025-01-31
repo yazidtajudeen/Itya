@@ -5,10 +5,12 @@ import 'package:yaz/themes/colors.dart';
 class CustomTextField extends StatefulWidget {
   final String hintText;
   final TextEditingController? controller;
+  final Icon? icon;
 
   const CustomTextField({
     required this.hintText,
     this.controller,
+    this.icon,
     super.key,
   });
 

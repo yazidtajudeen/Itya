@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yaz/Components/button_component.dart';
 import 'package:yaz/Presentation/view/Home.dart';
 import 'package:yaz/Presentation/view/signup.dart';
@@ -41,11 +41,7 @@ class _SelectAuthState extends State<SelectAuth>
 
   Future<void> _googleSignIn() async {
     try {
-      const webClientId =
-          '656475714323-j8k3g0o4b0i4bopm1niu7j9ls525rig5.apps.googleusercontent.com';
-
-      final GoogleSignIn googleSignIn =
-          GoogleSignIn(serverClientId: webClientId);
+      final GoogleSignIn googleSignIn = GoogleSignIn();
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
       if (googleUser == null) {
@@ -55,29 +51,29 @@ class _SelectAuthState extends State<SelectAuth>
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
-      if (googleAuth.idToken == null || googleAuth.accessToken == null) {
-        throw Exception('Google Sign-In failed: Missing tokens.');
-      }
 
-      final AuthResponse response =
-          await Supabase.instance.client.auth.signInWithIdToken(
-        provider: OAuthProvider.google,
-        idToken: googleAuth.idToken!,
-        accessToken: googleAuth.accessToken!,
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
 
-      if (response.user == null) {
-        throw Exception('Google authentication failed.');
-      }
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
 
-      // ✅ Navigate to Home screen on success
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => const Home()));
+      if (userCredential.user != null) {
+        if (mounted) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => const Home()));
+        }
+      }
     } catch (error) {
       logger.e('Google Sign-In Error: $error');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Google Sign-In failed: $error')),
-      );
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Google Sign-In failed: $error')),
+        );
+      }
     }
   }
 
@@ -136,7 +132,7 @@ class _SelectAuthState extends State<SelectAuth>
             ),
             SizedBox(height: height * 0.03),
             GestureDetector(
-              onTap: _googleSignIn,
+              onTap: _googleSignIn, // Using Firebase Google Sign-In
               child: Container(
                 width: width * 0.8,
                 height: height * 0.07,
